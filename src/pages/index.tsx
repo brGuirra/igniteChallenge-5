@@ -24,9 +24,9 @@ interface HomeProps {
   postsPagination: PostPagination;
 }
 
-// export default function Home() {
-//   // TODO
-// }
+export default function Home(): JSX.Element {
+  return <div>Hellow World!</div>;
+}
 
 // export const getStaticProps = async () => {
 //   // const prismic = getPrismicClient();
