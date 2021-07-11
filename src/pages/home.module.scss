@@ -1,1 +1,65 @@
-// TODO
+.postsList {
+  list-style-type: none;
+
+  li + li {
+    margin-top: 3rem;
+  }
+
+  .post {
+    strong {
+      font-size: var(--lg);
+
+      display: block;
+      margin-bottom: 0.5rem;
+
+      transition: color 0.2s;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+
+    .postDetails {
+      display: flex;
+      font-size: var(--sm);
+
+      time {
+        display: flex;
+        align-items: center;
+        margin-right: 1.5rem;
+      }
+
+      address {
+        display: flex;
+        align-items: center;
+        font-style: normal;
+      }
+
+      svg {
+        margin-right: 0.5rem;
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &:hover {
+      strong {
+        color: var(--pink-500);
+      }
+    }
+  }
+}
+
+.loadMore {
+  background: transparent;
+  border: none;
+  margin-top: 4rem;
+
+  color: var(--pink-500);
+
+  transition: text-decoration 0.2s;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

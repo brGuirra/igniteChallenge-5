@@ -1,1 +1,6 @@
-// TODO
+@import '../../styles/common.module.scss';
+
+.header {
+  margin-bottom: 3rem;
+  @extend .container;
+}
