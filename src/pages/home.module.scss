@@ -4,8 +4,10 @@
   li + li {
     margin-top: 3rem;
   }
+  .postLink {
+    text-decoration: none;
+    color: var(--gray-300);
 
-  .post {
     strong {
       font-size: var(--lg);
 

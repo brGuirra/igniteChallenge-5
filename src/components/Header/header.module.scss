@@ -3,4 +3,8 @@
 .header {
   margin-bottom: 3rem;
   @extend .container;
+
+  img {
+    width: initial;
+  }
 }
