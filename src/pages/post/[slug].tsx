@@ -13,6 +13,7 @@ import { getPrismicClient } from '../../services/prismic';
 import commonStyles from '../../styles/common.module.scss';
 import styles from './post.module.scss';
 import { dateFormat } from '../../helper/dateFormat';
+import { Comments } from '../../components/Comments';
 
 interface Post {
   estimateReadingTime: number;
@@ -60,39 +61,49 @@ export default function Post({ post }: PostProps): JSX.Element {
   const estimateReadingTime = Math.ceil(wordsCounter / 200);
 
   return (
-    <main>
-      {router.isFallback ? (
-        <div>Carregando...</div>
-      ) : (
-        <>
-          <img className={styles.banner} src={post.data.banner.url} alt="" />
-          <div className={styles.container}>
-            <h1>{post.data.title}</h1>
-            <div className={styles.postInfo}>
-              <time>
-                <FiCalendar />
-                {dateFormat(post.first_publication_date)}
-              </time>
-              <address>
-                <FiUser />
-                {post.data.author}
-              </address>
-              <span>
-                <FiClock />
-                <span>{estimateReadingTime} min</span>
-              </span>
-            </div>
-            {content.map(section => (
-              <div className={styles.postSection} key={section.heading}>
-                <h2>{section.heading}</h2>
-                {/* eslint-disable-next-line */}
-                <div dangerouslySetInnerHTML={{ __html: section.body.text }} />
+    <>
+      <main>
+        {router.isFallback ? (
+          <div>Carregando...</div>
+        ) : (
+          <>
+            <img className={styles.banner} src={post.data.banner.url} alt="" />
+            <div className={styles.postContainer}>
+              <h1>{post.data.title}</h1>
+              <div className={styles.postInfo}>
+                <time>
+                  <FiCalendar />
+                  {dateFormat(post.first_publication_date)}
+                </time>
+                <address>
+                  <FiUser />
+                  {post.data.author}
+                </address>
+                <span>
+                  <FiClock />
+                  <span>{estimateReadingTime} min</span>
+                </span>
               </div>
-            ))}
-          </div>
-        </>
-      )}
-    </main>
+              {content.map(section => (
+                <div
+                  className={styles.postSection}
+                  key={section.heading + Math.floor(Math.random() * 100)}
+                >
+                  <h2>{section.heading}</h2>
+                  {/* eslint-disable-next-line */}
+                  <div
+                    dangerouslySetInnerHTML={{ __html: section.body.text }}
+                  />
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+      </main>
+      <section className={styles.commentSection}>
+        <Comments />
+      </section>
+    </>
   );
 }
 

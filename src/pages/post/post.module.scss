@@ -3,7 +3,7 @@
   object-fit: cover;
 }
 
-.container {
+.postContainer {
   max-width: 700px;
   margin: 0 auto;
 
@@ -35,4 +35,9 @@
   .postSection + .postSection {
     margin-top: 3rem;
   }
+}
+
+.commentSection {
+  max-width: 700px;
+  margin: 5rem auto 0;
 }
