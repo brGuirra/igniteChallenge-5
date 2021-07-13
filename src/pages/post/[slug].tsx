@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 import { FiCalendar } from 'react-icons/fi';
 import { FiUser } from 'react-icons/fi';
@@ -10,7 +11,6 @@ import PrismicDom from 'prismic-dom';
 
 import { getPrismicClient } from '../../services/prismic';
 
-import commonStyles from '../../styles/common.module.scss';
 import styles from './post.module.scss';
 import { dateFormat } from '../../helper/dateFormat';
 import { Comments } from '../../components/Comments';
@@ -62,6 +62,9 @@ export default function Post({ post }: PostProps): JSX.Element {
 
   return (
     <>
+      <Head>
+        <title>Spacetraveling | {post.data.title}</title>
+      </Head>
       <main>
         {router.isFallback ? (
           <div>Carregando...</div>
@@ -90,7 +93,7 @@ export default function Post({ post }: PostProps): JSX.Element {
                   key={section.heading + Math.floor(Math.random() * 100)}
                 >
                   <h2>{section.heading}</h2>
-                  {/* eslint-disable-next-line */}
+                  {/* eslint-disable */}
                   <div
                     dangerouslySetInnerHTML={{ __html: section.body.text }}
                   />
